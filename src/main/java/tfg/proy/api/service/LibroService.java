@@ -27,7 +27,7 @@ public class LibroService {
         return libros;
     }
 
-     public List<Libro> getAutor(String a){
+    public List<Libro> getAutor(String a){
         //TODO - añadir logica correcta
         List<Libro> libros=new ArrayList<>();
         libros.add(new Libro());
@@ -36,7 +36,7 @@ public class LibroService {
         return libros;
     }
 
-     public List<Libro> getSaga(String a){
+    public List<Libro> getSaga(String a){
         //TODO - añadir logica correcta
         List<Libro> libros=new ArrayList<>();
         libros.add(new Libro());
@@ -49,6 +49,15 @@ public class LibroService {
         //TODO - añadir logica correcta
         Libro lib=new Libro();
         return lib;
+    }
+    
+    public List<Libro> getPrecio(double precio){
+        //TODO - añadir logica correcta
+        List<Libro> libros=new ArrayList<>();
+        libros.add(new Libro());
+        libros.add(new Libro());
+        libros.add(new Libro());
+        return libros;
     }
 
     //POST

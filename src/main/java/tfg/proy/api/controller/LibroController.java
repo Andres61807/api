@@ -21,7 +21,7 @@ public class LibroController {
 
     @Autowired
     private LibroService libroService;
-    
+
     //Metodos GET 
     @GetMapping("/listado")
     public List<Libro> get(){
@@ -46,6 +46,11 @@ public class LibroController {
     @GetMapping("/{id}")
     public Libro get(@PathVariable int id){
         return libroService.get(id);
+    }
+
+    @GetMapping("/{precio}")
+    public List<Libro> getPrecio(@PathVariable double precio){
+        return libroService.getPrecio(precio);
     }
 
     //Metodos POST 
