@@ -22,13 +22,11 @@ public class UsuarioController {
     //GET
     @GetMapping("/{id}")
     public Usuario get(@PathVariable int id){
-        //TODO - añadir service
         return usuarioService.get(id);
     }
 
     @GetMapping 
     public Usuario get(@RequestBody Usuario usuario){
-        //TODO - añadir service
         return usuarioService.get(usuario);
     }
 

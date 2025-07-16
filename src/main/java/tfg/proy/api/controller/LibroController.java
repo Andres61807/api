@@ -58,6 +58,9 @@ public class LibroController {
     //Metodos POST 
     @PostMapping
     public Libro create(@RequestBody Libro libro){
+        if (libro.getId()!=0){
+            throw new RuntimeException("No se acepta id");
+        }
         return libroService.create(libro);
     }
 
