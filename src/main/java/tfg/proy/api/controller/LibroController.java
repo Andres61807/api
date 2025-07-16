@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import tfg.proy.api.entity.Autor;
+import tfg.proy.api.entity.Genero;
 import tfg.proy.api.entity.Libro;
 import tfg.proy.api.service.LibroService;
 
@@ -28,19 +30,19 @@ public class LibroController {
         return libroService.getAll();
     }
 
-    @GetMapping("/listado/{genero}")
-    public List<Libro> getGenero(@PathVariable String genero){
-        return libroService.getGenero(genero);
+    @GetMapping("/listado/genero")
+    public List<Libro> getGenero(@RequestBody Genero [] generos){
+        return libroService.getGenero(generos);
     }
     
-    @GetMapping("/listado/{autor}")
-    public List<Libro> getAutor(@PathVariable String autor){
-        return libroService.getGenero(autor);
+    @GetMapping("/listado/autor")
+    public List<Libro> getAutor(@RequestBody Autor [] autores){
+        return libroService.getAutor(autores);
     }
 
     @GetMapping("/listado/{saga}")
     public List<Libro> getSaga(@PathVariable String saga){
-        return libroService.getGenero(saga);
+        return libroService.getSaga(saga);
     }
 
     @GetMapping("/{id}")
@@ -48,25 +50,25 @@ public class LibroController {
         return libroService.get(id);
     }
 
-    @GetMapping("/{precio}")
+    @GetMapping("/listado/{precio}")
     public List<Libro> getPrecio(@PathVariable double precio){
         return libroService.getPrecio(precio);
     }
 
     //Metodos POST 
-    @PostMapping("/{libro}")
+    @PostMapping
     public Libro create(@RequestBody Libro libro){
         return libroService.create(libro);
     }
 
     //Metodso PATCH
-    @PatchMapping("/{libro}")
+    @PatchMapping
     public void update(@RequestBody Libro libro){
         libroService.update(libro);
     }
 
     //Metodos DELETE
-    @DeleteMapping("/{libro}")
+    @DeleteMapping
     public void delete(@RequestBody Libro libro){
         libroService.delete(libro);
     }

@@ -1,14 +1,25 @@
 package tfg.proy.api.entity;
 
+import jakarta.persistence.Entity;
+
+//@Entity
 public class Libro {
     
+    private long id;
     private String titulo;
     private String genero;
     private String autor;
     private String saga;
     private double precio;
     private boolean DRM;
-    
+    private boolean activo;
+
+    public long getId() {
+        return id;
+    }
+    public void setId(long id) {
+        this.id = id;
+    }
     public String getTitulo() {
         return titulo;
     }
@@ -39,11 +50,16 @@ public class Libro {
     public void setPrecio(double precio) {
         this.precio = precio;
     }
-    public boolean isDRM() {
+    public boolean getDRM() {
         return DRM;
     }
     public void setDRM(boolean dRM) {
         DRM = dRM;
     }
-    
+    public boolean getActivo() {
+        return activo;
+    }
+    public void setActivo(boolean activo){
+        this.activo=activo;
+    }
 }

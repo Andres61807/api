@@ -1,7 +1,9 @@
 package tfg.proy.api.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,19 +20,25 @@ public class UsuarioController {
     private UsuarioService usuarioService;
 
     //GET
-
     @GetMapping("/{id}")
     public Usuario get(@PathVariable int id){
         //TODO - añadir service
         return usuarioService.get(id);
     }
 
-    
-    @GetMapping ("/{usuario}")
+    @GetMapping 
     public Usuario get(@RequestBody Usuario usuario){
         //TODO - añadir service
         return usuarioService.get(usuario);
     }
 
-    
+    @PatchMapping
+    public void update(@RequestBody Usuario usuario){
+        usuarioService.update(usuario);
+    }
+
+    @DeleteMapping
+    public void delete(@RequestBody Usuario usuario){
+        usuarioService.delete(usuario);
+    }
 }
