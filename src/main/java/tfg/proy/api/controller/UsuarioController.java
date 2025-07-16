@@ -17,19 +17,20 @@ public class UsuarioController {
     @Autowired
     private UsuarioService usuarioService;
 
-
     //GET
 
     @GetMapping("/{id}")
     public Usuario get(@PathVariable int id){
         //TODO - añadir service
-        return new Usuario();
+        return usuarioService.get(id);
     }
 
     
     @GetMapping ("/{usuario}")
     public Usuario get(@RequestBody Usuario usuario){
         //TODO - añadir service
-        return new Usuario();
+        return usuarioService.get(usuario);
     }
+
+    
 }

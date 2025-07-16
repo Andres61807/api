@@ -3,6 +3,7 @@ package tfg.proy.api.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -54,14 +55,15 @@ public class LibroController {
     }
 
     //Metodso PATCH
-    @PatchMapping
-    public void update(){
-        libroService.update();
+    @PatchMapping("/{libro}")
+    public void update(@RequestBody Libro libro){
+        libroService.update(libro);
     }
 
     //Metodos DELETE
-    public void delete(){
-        libroService.delete();
+    @DeleteMapping("/{libro}")
+    public void delete(@RequestBody Libro libro){
+        libroService.delete(libro);
     }
 
 }
