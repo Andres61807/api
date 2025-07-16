@@ -9,26 +9,18 @@ import org.springframework.stereotype.Service;
 import tfg.proy.api.entity.Autor;
 import tfg.proy.api.entity.Genero;
 import tfg.proy.api.entity.Libro;
+import tfg.proy.api.repository.LibroRepository;
 
 
 @Service
 public class LibroService {
     
+    @Autowired
+    private LibroRepository libroRepository;
+
     //GET
     public List<Libro> getAll(){
-        //TODO - añadir logica correcta
-        List<Libro> libros=new ArrayList<>();
-        Libro lib1=new Libro();
-        lib1.setId(1);
-        Libro lib2=new Libro();
-        lib1.setId(2);
-        Libro lib3=new Libro();
-        lib1.setId(3);
-
-        libros.add(lib1);
-        libros.add(lib2);
-        libros.add(lib3);
-        return libros;
+        return libroRepository.findAll();
     }   
     
     public List<Libro> getGenero(Genero [] a){
@@ -80,9 +72,7 @@ public class LibroService {
     }
 
     public Libro get(int id){
-        //TODO - añadir logica correcta
-        Libro lib=new Libro();
-        return lib;
+        return libroRepository.findById(id).orElse(null);
     }
 
     public List<Libro> getPrecio(double precio){
@@ -103,11 +93,12 @@ public class LibroService {
 
     //POST
     public Libro create(Libro libro){
-        return new Libro();
+        return libroRepository.save(libro);
     }
 
-    //PUT 
-    public void update(Libro lib){
+    //PATCH 
+    public void update(Libro libro){
+        libroRepository.save(libro);
         //TODO - añadir logica
     }
 
