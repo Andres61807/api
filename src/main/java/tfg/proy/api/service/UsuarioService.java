@@ -4,19 +4,24 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import tfg.proy.api.entity.Usuario;
-
+import tfg.proy.api.repository.UsuarioRepository;
 
 @Service
 public class UsuarioService {
     
+    @Autowired
+    private UsuarioRepository usuarioRepository;
+
     public Usuario get(int id){
-        //TODO - 
-        return new Usuario();
+        return usuarioRepository.findById(id).orElse(null);
     }
 
     public Usuario get(Usuario usuario){
-        //TODO - falta repo
-        return new Usuario();
+        return usuarioRepository.findBy(null, null);
+    }
+
+    public Usuario create(Usuario usuario){
+        return usuarioRepository.saveAndFlush(usuario);
     }
 
     public void update(Usuario usuario){

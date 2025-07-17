@@ -93,17 +93,16 @@ public class LibroService {
 
     //POST
     public Libro create(Libro libro){
-        return libroRepository.save(libro);
+        return libroRepository.saveAndFlush(libro);
     }
 
     //PATCH 
     public void update(Libro libro){
-        libroRepository.save(libro);
-        //TODO - añadir logica
+        libroRepository.saveAndFlush(libro);
     }
 
     //DELETE
-    public void delete(Libro lib){
-        //TODO - añadir logica
+    public void delete(Libro libro){
+        libroRepository.delete(libro);
     }
 }
