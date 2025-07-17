@@ -26,8 +26,13 @@ public class UsuarioController {
         return usuarioService.get(id);
     }
 
-    @GetMapping 
+    @GetMapping
     public Usuario get(@RequestBody Usuario usuario){
+        return usuarioService.get(usuario);
+    }
+
+    @GetMapping("/login")
+    public Usuario get(@PathVariable String usuario){
         return usuarioService.get(usuario);
     }
 

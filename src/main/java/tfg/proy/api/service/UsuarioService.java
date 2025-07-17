@@ -1,6 +1,7 @@
 package tfg.proy.api.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
 
 import tfg.proy.api.entity.Usuario;
@@ -17,7 +18,11 @@ public class UsuarioService {
     }
 
     public Usuario get(Usuario usuario){
-        return usuarioRepository.findBy(null, null);
+        return usuario;
+    }
+
+    public Usuario get(String usuario){
+        return usuarioRepository.findByEmailOrUsuario(usuario, usuario);
     }
 
     public Usuario create(Usuario usuario){
