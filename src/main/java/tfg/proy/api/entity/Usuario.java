@@ -1,10 +1,14 @@
 package tfg.proy.api.entity;
 
+import java.util.Date;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -13,14 +17,40 @@ public class Usuario {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name="id_usuario")
+    @Column(name="ID_usuario")
     private long id;
     private String nombre;
     private String apellidos;
     private String usuario;
     private String correo; 
-    private String contraseña;
-    
+    private String pass;
+    private String semilla;
+    private Date fecha_registro;
+    private Date ultimo_registro;
+    @OneToOne
+    @JoinColumn(name="ID_biblioteca")
+    private Biblioteca biblioteca;
+    @OneToOne(optional = true)
+    @JoinColumn(name="ID_editorial")
+    private Editorial editorial;
+
+    public Usuario() {
+    }
+    public Usuario(long id, String nombre, String apellidos, String usuario, String correo, String pass, String semilla,
+            Date fecha_registro, Date ultimo_registro, Biblioteca biblioteca) {
+        this.id = id;
+        this.nombre = nombre;
+        this.apellidos = apellidos;
+        this.usuario = usuario;
+        this.correo = correo;
+        this.pass = pass;
+        this.semilla = semilla;
+        this.fecha_registro = fecha_registro;
+        this.ultimo_registro = ultimo_registro;
+        this.biblioteca = biblioteca;
+    }
+
+
     public long getId() {
         return id;
     }
@@ -51,12 +81,35 @@ public class Usuario {
     public void setCorreo(String correo) {
         this.correo = correo;
     }
-    public String getContraseña() {
-        return contraseña;
+    public String getPass() {
+        return pass;
     }
-    public void setContraseña(String contraseña) {
-        this.contraseña = contraseña;
+    public void setPass(String pass) {
+        this.pass = pass;
+    }
+    public String getSemilla() {
+        return semilla;
+    }
+    public void setSemilla(String semilla) {
+        this.semilla = semilla;
+    }
+    public Date getFecha_registro() {
+        return fecha_registro;
+    }
+    public void setFecha_registro(Date fecha_registro) {
+        this.fecha_registro = fecha_registro;
+    }
+    public Date getUltimo_registro() {
+        return ultimo_registro;
+    }
+    public void setUltimo_registro(Date ultimo_registro) {
+        this.ultimo_registro = ultimo_registro;
+    }
+    public Biblioteca getBiblioteca() {
+        return biblioteca;
+    }
+    public void setBiblioteca(Biblioteca biblioteca) {
+        this.biblioteca = biblioteca;
     }
     
-
 }

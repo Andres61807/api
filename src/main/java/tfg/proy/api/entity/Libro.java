@@ -1,10 +1,15 @@
 package tfg.proy.api.entity;
 
+import java.util.List;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -13,20 +18,35 @@ public class Libro {
     
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name="id_libro")
-    private long id;
+    @Column(name="ID_libro")
+    private int id;
     private String titulo;
-    private String genero;
-    private String autor;
-    private String saga;
+    @OneToMany(mappedBy="genero")
+    private List<LibroGenero> genero;
+    @OneToMany(mappedBy="ID_autor")
+    private List<Autor> autor;
+    @ManyToOne
+    @JoinColumn(name="ID_saga")
+    private Saga saga;
     private double precio;
+    private int descuento;
     private boolean DRM;
     private boolean activo;
+    @Column(name="n_paginas")
+    private int nPaginas;
+    private String sinopsis;
+    private Double valoracion;
+    @Column(name="n_votos")
+    private int nVotos;
+    @Column(name="URLibro")
+    private String urlLibro;
+    @Column(name="URLportada")
+    private String urlPortada;
 
-    public long getId() {
+    public int getId() {
         return id;
     }
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
     public String getTitulo() {
@@ -35,22 +55,22 @@ public class Libro {
     public void setTitulo(String titulo) {
         this.titulo = titulo;
     }
-    public String getGenero() {
+    public List<LibroGenero> getGenero() {
         return genero;
     }
-    public void setGenero(String genero) {
+    public void setGenero(List<LibroGenero> genero) {
         this.genero = genero;
     }
-    public String getAutor() {
+    public List<Autor> getAutor() {
         return autor;
     }
-    public void setAutor(String autor) {
+    public void setAutor(List<Autor> autor) {
         this.autor = autor;
     }
-    public String getSaga() {
+    public Saga getSaga() {
         return saga;
     }
-    public void setSaga(String saga) {
+    public void setSaga(Saga saga) {
         this.saga = saga;
     }
     public double getPrecio() {
@@ -70,5 +90,47 @@ public class Libro {
     }
     public void setActivo(boolean activo){
         this.activo=activo;
+    }
+    public int getDescuento() {
+        return descuento;
+    }
+    public void setDescuento(int descuento) {
+        this.descuento = descuento;
+    }
+    public int getnPaginas() {
+        return nPaginas;
+    }
+    public void setnPaginas(int nPaginas) {
+        this.nPaginas = nPaginas;
+    }
+    public String getSinopsis() {
+        return sinopsis;
+    }
+    public void setSinopsis(String sinopsis) {
+        this.sinopsis = sinopsis;
+    }
+    public Double getValoracion() {
+        return valoracion;
+    }
+    public void setValoracion(Double valoracion) {
+        this.valoracion = valoracion;
+    }
+    public int getnVotos() {
+        return nVotos;
+    }
+    public void setnVotos(int nVotos) {
+        this.nVotos = nVotos;
+    }
+    public String getUrlLibro() {
+        return urlLibro;
+    }
+    public void setUrlLibro(String urlLibro) {
+        this.urlLibro = urlLibro;
+    }
+    public String getUrlPortada() {
+        return urlPortada;
+    }
+    public void setUrlPortada(String urlPortada) {
+        this.urlPortada = urlPortada;
     }
 }
