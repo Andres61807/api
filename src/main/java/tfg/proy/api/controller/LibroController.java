@@ -29,7 +29,7 @@ public class LibroController {
     public List<Libro> get(){
         return libroService.getAll();
     }
-
+    /*
     @GetMapping("/listado/genero")
     public List<Libro> getGenero(@RequestBody Genero [] generos){
         return libroService.getGenero(generos);
@@ -49,12 +49,12 @@ public class LibroController {
     public Libro get(@PathVariable int id){
         return libroService.get(id);
     }
-
+     
     @GetMapping("/listado/{precio}")
     public List<Libro> getPrecio(@PathVariable double precio){
         return libroService.getPrecio(precio);
     }
-
+    */
     //Metodos POST 
     @PostMapping
     public Libro create(@RequestBody Libro libro){

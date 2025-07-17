@@ -22,52 +22,19 @@ public class LibroService {
     public List<Libro> getAll(){
         return libroRepository.findAll();
     }   
-    
+    /*
     public List<Libro> getGenero(Genero [] a){
-        //TODO - añadir logica correcta
-        List<Libro> libros=new ArrayList<>();
-        Libro lib1=new Libro();
-        lib1.setId(1);
-        Libro lib2=new Libro();
-        lib2.setId(2);
-        Libro lib3=new Libro();
-        lib3.setId(3);
-
-        libros.add(lib1);
-        libros.add(lib2);
-        libros.add(lib3);
+     
         return libros;
     }
 
     public List<Libro> getAutor(Autor [] a){
-        //TODO - añadir logica correcta
-        List<Libro> libros=new ArrayList<>();
-        Libro lib1=new Libro();
-        lib1.setId(1);
-        Libro lib2=new Libro();
-        lib2.setId(2);
-        Libro lib3=new Libro();
-        lib3.setId(3);
 
-        libros.add(lib1);
-        libros.add(lib2);
-        libros.add(lib3);
         return libros;
     }
 
     public List<Libro> getSaga(String a){
-        //TODO - añadir logica correcta
-        List<Libro> libros=new ArrayList<>();
-        Libro lib1=new Libro();
-        lib1.setId(1);
-        Libro lib2=new Libro();
-        lib2.setId(2);
-        Libro lib3=new Libro();
-        lib3.setId(3);
-
-        libros.add(lib1);
-        libros.add(lib2);
-        libros.add(lib3);
+  
         return libros;
     }
 
@@ -76,21 +43,10 @@ public class LibroService {
     }
 
     public List<Libro> getPrecio(double precio){
-        //TODO - añadir logica correcta
-        List<Libro> libros=new ArrayList<>();
-        Libro lib1=new Libro();
-        lib1.setId(1);
-        Libro lib2=new Libro();
-        lib2.setId(2);
-        Libro lib3=new Libro();
-        lib3.setId(3);
 
-        libros.add(lib1);
-        libros.add(lib2);
-        libros.add(lib3);
         return libros;
     }
-
+    */
     //POST
     public Libro create(Libro libro){
         return libroRepository.saveAndFlush(libro);

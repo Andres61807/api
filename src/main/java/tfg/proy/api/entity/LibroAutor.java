@@ -7,8 +7,8 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name="libro_genero")
-public class LibroGenero {
+@Table(name="libro_autor")
+public class LibroAutor {
 
     @Id
     @ManyToOne
@@ -16,10 +16,16 @@ public class LibroGenero {
     private Libro libro;
     @Id
     @ManyToOne
-    @JoinColumn(name="ID_genero")
-    private Genero genero;
+    @JoinColumn(name="ID_autor")
+    private Autor autor;
 
-    public LibroGenero() {
+    
+    public LibroAutor() {
+    }
+    
+    public LibroAutor(Libro libro, Autor autor) {
+        this.libro = libro;
+        this.autor = autor;
     }
 
     public Libro getLibro() {
@@ -28,11 +34,11 @@ public class LibroGenero {
     public void setLibro(Libro libro) {
         this.libro = libro;
     }
-    public Genero getGenero() {
-        return genero;
+    public Autor getAutor() {
+        return autor;
     }
-    public void setGenero(Genero genero) {
-        this.genero = genero;
+    public void setAutor(Autor autor) {
+        this.autor = autor;
     }
-
+    
 }

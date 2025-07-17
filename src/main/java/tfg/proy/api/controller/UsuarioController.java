@@ -35,7 +35,7 @@ public class UsuarioController {
     public Usuario get(@PathVariable String usuario){
         return usuarioService.get(usuario);
     }
-
+     
     @PostMapping
     public Usuario create(@RequestBody Usuario usuario){
         return usuarioService.create(usuario);

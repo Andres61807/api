@@ -18,7 +18,7 @@ public class Usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name="ID_usuario")
-    private long id;
+    private int id;
     private String nombre;
     private String apellidos;
     private String usuario;
@@ -36,7 +36,7 @@ public class Usuario {
 
     public Usuario() {
     }
-    public Usuario(long id, String nombre, String apellidos, String usuario, String correo, String pass, String semilla,
+    public Usuario(int id, String nombre, String apellidos, String usuario, String correo, String pass, String semilla,
             Date fecha_registro, Date ultimo_registro, Biblioteca biblioteca) {
         this.id = id;
         this.nombre = nombre;
@@ -51,10 +51,10 @@ public class Usuario {
     }
 
 
-    public long getId() {
+    public int getId() {
         return id;
     }
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
     public String getNombre() {

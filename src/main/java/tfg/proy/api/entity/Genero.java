@@ -1,5 +1,7 @@
 package tfg.proy.api.entity;
 
+import java.util.List;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -16,21 +18,27 @@ public class Genero {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name="ID_genero")
     private int id;
-    private String geero;
-    @OneToMany(mappedBy="libro")
-    private Libro libro;
+    private String genero;
+    @OneToMany(mappedBy="genero")
+    private List<LibroGenero> libros;
     public int getId() {
         return id;
     }
     public void setId(int id) {
         this.id = id;
     }
-    public String getGeero() {
-        return geero;
+    public String getGenero() {
+        return genero;
     }
-    public void setGenero(String geero) {
-        this.geero = geero;
+    public void setGenero(String genero) {
+        this.genero = genero;
     }
-
+    public List<LibroGenero> getLibro() {
+        return libros;
+    }
+    public void setLibro(List<LibroGenero> libro) {
+        this.libros = libro;
+    }
+    
     
 }

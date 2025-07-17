@@ -19,12 +19,12 @@ public class Libro {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name="ID_libro")
-    private int id;
+    private String id;
     private String titulo;
-    @OneToMany(mappedBy="genero")
-    private List<LibroGenero> genero;
-    @OneToMany(mappedBy="ID_autor")
-    private List<Autor> autor;
+    @OneToMany(mappedBy="libro")
+    private List<LibroGenero> generos;
+    @OneToMany(mappedBy="libro")
+    private List<LibroAutor> autores;
     @ManyToOne
     @JoinColumn(name="ID_saga")
     private Saga saga;
@@ -43,10 +43,10 @@ public class Libro {
     @Column(name="URLportada")
     private String urlPortada;
 
-    public int getId() {
+    public String getId() {
         return id;
     }
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
     public String getTitulo() {
@@ -55,17 +55,17 @@ public class Libro {
     public void setTitulo(String titulo) {
         this.titulo = titulo;
     }
-    public List<LibroGenero> getGenero() {
-        return genero;
+    public List<LibroGenero> getgeneros() {
+        return generos;
     }
-    public void setGenero(List<LibroGenero> genero) {
-        this.genero = genero;
+    public void setgeneros(List<LibroGenero> generos) {
+        this.generos = generos;
     }
-    public List<Autor> getAutor() {
-        return autor;
+    public List<LibroAutor> getAutores() {
+        return autores;
     }
-    public void setAutor(List<Autor> autor) {
-        this.autor = autor;
+    public void setAutores(List<LibroAutor> autor) {
+        this.autores = autor;
     }
     public Saga getSaga() {
         return saga;
