@@ -7,7 +7,7 @@ import tfg.proy.api.entity.Usuario;
 public interface UsuarioRepository extends JpaRepository<Usuario, Integer>{
 
     
-    Usuario findByCorreoAndPassword(String email,String password);
+    Usuario findByCorreoAndPass(String email,String password);
     Usuario findByCorreoOrUsuario(String correo,String usuario);
      
 } 

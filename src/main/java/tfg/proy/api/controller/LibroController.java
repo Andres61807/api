@@ -29,14 +29,14 @@ public class LibroController {
     public List<Libro> get(){
         return libroService.getAll();
     }
-    /*
+    
     @GetMapping("/listado/genero")
-    public List<Libro> getGenero(@RequestBody Genero [] generos){
+    public List<Libro> getGenero(@RequestBody List<Genero> generos){
         return libroService.getGenero(generos);
     }
-    
+    /*
     @GetMapping("/listado/autor")
-    public List<Libro> getAutor(@RequestBody Autor [] autores){
+    public List<Libro> getAutor(@RequestBody List<Autor> autores){
         return libroService.getAutor(autores);
     }
 
@@ -55,6 +55,7 @@ public class LibroController {
         return libroService.getPrecio(precio);
     }
     */
+    
     //Metodos POST 
     @PostMapping
     public Libro create(@RequestBody Libro libro){

@@ -21,6 +21,7 @@ public class Genero {
     private String genero;
     @OneToMany(mappedBy="genero")
     private List<LibroGenero> libros;
+    
     public int getId() {
         return id;
     }

@@ -22,13 +22,12 @@ public class LibroService {
     public List<Libro> getAll(){
         return libroRepository.findAll();
     }   
-    /*
-    public List<Libro> getGenero(Genero [] a){
-     
-        return libros;
+    
+    public List<Libro> getGenero(List<Genero> a){
+        return libroRepository.findByGeneros(a);
     }
-
-    public List<Libro> getAutor(Autor [] a){
+    /*
+    public List<Libro> getAutor(List<Autor> a){
 
         return libros;
     }
@@ -43,7 +42,6 @@ public class LibroService {
     }
 
     public List<Libro> getPrecio(double precio){
-
         return libros;
     }
     */
