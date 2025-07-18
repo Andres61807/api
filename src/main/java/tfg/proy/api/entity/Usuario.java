@@ -1,6 +1,6 @@
 package tfg.proy.api.entity;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -27,8 +27,8 @@ public class Usuario {
     private String correo; 
     private String pass;
     private String semilla;
-    private Date fecha_registro;
-    private Date ultimo_registro;
+    private LocalDate fecha_registro;
+    private LocalDate ultimo_registro;
     @OneToOne
     @JoinColumn(name="ID_biblioteca")
     private Biblioteca biblioteca;
@@ -39,7 +39,7 @@ public class Usuario {
     public Usuario() {
     }
     public Usuario(int id, String nombre, String apellidos, String usuario, String correo, String pass, String semilla,
-            Date fecha_registro, Date ultimo_registro, Biblioteca biblioteca) {
+            LocalDate fecha_registro, LocalDate ultimo_registro, Biblioteca biblioteca) {
         this.id = id;
         this.nombre = nombre;
         this.apellidos = apellidos;
@@ -95,16 +95,16 @@ public class Usuario {
     public void setSemilla(String semilla) {
         this.semilla = semilla;
     }
-    public Date getFecha_registro() {
+    public LocalDate getFecha_registro() {
         return fecha_registro;
     }
-    public void setFecha_registro(Date fecha_registro) {
+    public void setFecha_registro(LocalDate fecha_registro) {
         this.fecha_registro = fecha_registro;
     }
-    public Date getUltimo_registro() {
+    public LocalDate getUltimo_registro() {
         return ultimo_registro;
     }
-    public void setUltimo_registro(Date ultimo_registro) {
+    public void setUltimo_registro(LocalDate ultimo_registro) {
         this.ultimo_registro = ultimo_registro;
     }
     public Biblioteca getBiblioteca() {

@@ -1,6 +1,6 @@
 package tfg.proy.api.entity;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -17,7 +17,7 @@ public class Biblioteca {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name="ID_biblioteca")
     private int id;
-    private Date ultimoRegistro;
+    private LocalDate ultimoRegistro;
     
     public int getId() {
         return id;
@@ -25,10 +25,10 @@ public class Biblioteca {
     public void setId(int id) {
         this.id = id;
     }
-    public Date getUltimoRegistro() {
+    public LocalDate getUltimoRegistro() {
         return ultimoRegistro;
     }
-    public void setUltimoRegistro(Date ultimoRegistro) {
+    public void setUltimoRegistro(LocalDate ultimoRegistro) {
         this.ultimoRegistro = ultimoRegistro;
     }
 
