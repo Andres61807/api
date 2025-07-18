@@ -21,7 +21,9 @@ public class Usuario {
     private int id;
     private String nombre;
     private String apellidos;
+    @Column(unique = true)
     private String usuario;
+    @Column(unique = true)
     private String correo; 
     private String pass;
     private String semilla;
