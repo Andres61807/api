@@ -1,33 +1,43 @@
 package tfg.proy.api.entity;
 
+import java.util.List;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity
 @Table(name="editorial")
 public class Editorial {
     
-    //TODO - revisar
+    
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name="ID_editorial")
     private String id;
     private String nombre;
     private String direccion;
+    @Column(unique = true)
     private String correo;
+    @Column(unique = true)
     private String telefono;
     private String contacto;
+    @Column(unique = true)
     private String web;
-
+    @OneToMany(mappedBy = "editorial")
+    private List<LibroEditorial> libros;
+    @OneToOne(optional = true)
+    @JoinColumn(name="ID_editorial")
+    private Usuario usuarioFK;
+    
     public Editorial() {
     }
     public Editorial(String id, String nombre, String direccion, String correo, String telefono, String contacto,
-            String web) {
+            String web,List<LibroEditorial> libros) {
         this.id = id;
         this.nombre = nombre;
         this.direccion = direccion;
@@ -35,6 +45,7 @@ public class Editorial {
         this.telefono = telefono;
         this.contacto = contacto;
         this.web = web;
+        this.libros=libros;
     }
 
     public String getId() {
@@ -78,6 +89,12 @@ public class Editorial {
     }
     public void setWeb(String web) {
         this.web = web;
+    }
+    public List<LibroEditorial> getLibros() {
+        return libros;
+    }
+    public void setLibros(List<LibroEditorial> libros) {
+        this.libros = libros;
     }
     
     

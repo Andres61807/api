@@ -11,23 +11,23 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name="genero")
-public class Genero {
+@Table(name="idioma")
+public class Idioma {
     
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name="ID_genero")
+    @Column(name="ID_idioma")
     private Long id;
     @Column(unique = true)
-    private String genero;
-    @OneToMany(mappedBy="genero")
-    private List<LibroGenero> libros;
+    private String idioma;
+    @OneToMany(mappedBy = "idioma")
+    private List<LibroIdioma> libros;
     
-    public Genero() {
+    public Idioma() {
     }
-    public Genero(Long id, String genero, List<LibroGenero> libros) {
+    public Idioma(Long id, String idioma, List<LibroIdioma> libros) {
         this.id = id;
-        this.genero = genero;
+        this.idioma = idioma;
         this.libros = libros;
     }
     
@@ -37,19 +37,17 @@ public class Genero {
     public void setId(Long id) {
         this.id = id;
     }
-    public String getGenero() {
-        return genero;
+    public String getIdioma() {
+        return idioma;
     }
-    public void setGenero(String genero) {
-        this.genero = genero;
+    public void setIdioma(String idioma) {
+        this.idioma = idioma;
     }
-    public List<LibroGenero> getLibros() {
+    public List<LibroIdioma> getLibros() {
         return libros;
     }
-    public void setLibros(List<LibroGenero> libros) {
+    public void setLibros(List<LibroIdioma> libros) {
         this.libros = libros;
     }
-    
-    
     
 }

@@ -2,14 +2,15 @@ package tfg.proy.api.entity;
 
 import java.time.LocalDate;
 
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
+
 
 @Entity
 @Table(name="usuario")
@@ -18,7 +19,7 @@ public class Usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name="ID_usuario")
-    private int id;
+    private Long id;
     private String nombre;
     private String apellidos;
     @Column(unique = true)
@@ -29,17 +30,14 @@ public class Usuario {
     private String semilla;
     private LocalDate fecha_registro;
     private LocalDate ultimo_registro;
-    @OneToOne
-    @JoinColumn(name="ID_biblioteca")
-    private Biblioteca biblioteca;
     @OneToOne(optional = true)
-    @JoinColumn(name="ID_editorial")
     private Editorial editorial;
 
     public Usuario() {
     }
-    public Usuario(int id, String nombre, String apellidos, String usuario, String correo, String pass, String semilla,
-            LocalDate fecha_registro, LocalDate ultimo_registro, Biblioteca biblioteca) {
+
+    public Usuario(Long id, String nombre, String apellidos, String usuario, String correo, String pass, String semilla,
+            LocalDate fecha_registro, LocalDate ultimo_registro, Editorial editorial) {
         this.id = id;
         this.nombre = nombre;
         this.apellidos = apellidos;
@@ -49,69 +47,88 @@ public class Usuario {
         this.semilla = semilla;
         this.fecha_registro = fecha_registro;
         this.ultimo_registro = ultimo_registro;
-        this.biblioteca = biblioteca;
+        this.editorial = editorial;
     }
 
-
-    public int getId() {
+    public Long getId() {
         return id;
     }
-    public void setId(int id) {
+
+    public void setId(Long id) {
         this.id = id;
     }
+
     public String getNombre() {
         return nombre;
     }
+
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
+
     public String getApellidos() {
         return apellidos;
     }
+
     public void setApellidos(String apellidos) {
         this.apellidos = apellidos;
     }
+
     public String getUsuario() {
         return usuario;
     }
+
     public void setUsuario(String usuario) {
         this.usuario = usuario;
     }
+
     public String getCorreo() {
         return correo;
     }
+
     public void setCorreo(String correo) {
         this.correo = correo;
     }
+
     public String getPass() {
         return pass;
     }
+
     public void setPass(String pass) {
         this.pass = pass;
     }
+
     public String getSemilla() {
         return semilla;
     }
+
     public void setSemilla(String semilla) {
         this.semilla = semilla;
     }
+
     public LocalDate getFecha_registro() {
         return fecha_registro;
     }
+
     public void setFecha_registro(LocalDate fecha_registro) {
         this.fecha_registro = fecha_registro;
     }
+
     public LocalDate getUltimo_registro() {
         return ultimo_registro;
     }
+
     public void setUltimo_registro(LocalDate ultimo_registro) {
         this.ultimo_registro = ultimo_registro;
     }
-    public Biblioteca getBiblioteca() {
-        return biblioteca;
+
+    public Editorial getEditorial() {
+        return editorial;
     }
-    public void setBiblioteca(Biblioteca biblioteca) {
-        this.biblioteca = biblioteca;
+
+    public void setEditorial(Editorial editorial) {
+        this.editorial = editorial;
     }
+     
     
 }

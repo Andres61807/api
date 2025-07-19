@@ -17,25 +17,27 @@ public class Autor {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name="ID_autor")
-    private int id;
+    private Long id;
     private String nombre;
     private String apellidos;
     @OneToMany(mappedBy="autor")
     private List<LibroAutor> libros;
     
+    //constructores
     public Autor() {
     }
-    public Autor(int id, String nombre, String apellidos, List<LibroAutor> libros) {
+    public Autor(Long id, String nombre, String apellidos, List<LibroAutor> libros) {
         this.id = id;
         this.nombre = nombre;
         this.apellidos = apellidos;
         this.libros = libros;
     }
 
-    public int getId() {
+    //getter y setters
+    public Long getId() {
         return id;
     }
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
     public String getNombre() {
@@ -57,6 +59,6 @@ public class Autor {
         this.libros = libros;
     }
     
-
+    
 
 }

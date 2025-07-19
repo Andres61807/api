@@ -4,8 +4,6 @@ import java.util.List;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
@@ -17,7 +15,6 @@ import jakarta.persistence.Table;
 public class Libro {
     
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name="ID_libro")
     private String id;
     private String titulo;
@@ -28,20 +25,47 @@ public class Libro {
     @ManyToOne
     @JoinColumn(name="ID_saga")
     private Saga saga;
+    @OneToMany(mappedBy="libro")
+    private List<LibroIdioma> idiomas;
     private double precio;
     private int descuento;
     private boolean DRM;
-    private boolean activo;
     @Column(name="n_paginas")
     private int nPaginas;
     private String sinopsis;
     private Double valoracion;
     @Column(name="n_votos")
     private int nVotos;
-    @Column(name="URLibro")
+    @Column(name="URLibro", unique = true)
     private String urlLibro;
     @Column(name="URLportada")
     private String urlPortada;
+    @OneToMany(mappedBy = "libro")
+    private List<LibroEditorial> editoriales;
+    public Libro() {
+    }  
+
+    public Libro(String id, String titulo, List<LibroGenero> generos, List<LibroAutor> autores, Saga saga,
+            List<LibroIdioma> idiomas, double precio, int descuento, boolean dRM, int nPaginas, String sinopsis,
+            Double valoracion, int nVotos, String urlLibro, String urlPortada,List<LibroEditorial> editoriales) {
+        this.id = id;
+        this.titulo = titulo;
+        this.generos = generos;
+        this.autores = autores;
+        this.saga = saga;
+        this.idiomas = idiomas;
+        this.precio = precio;
+        this.descuento = descuento;
+        DRM = dRM;
+        this.nPaginas = nPaginas;
+        this.sinopsis = sinopsis;
+        this.valoracion = valoracion;
+        this.nVotos = nVotos;
+        this.urlLibro = urlLibro;
+        this.urlPortada = urlPortada;
+        this.editoriales=editoriales;
+    }
+
 
     public String getId() {
         return id;
@@ -54,12 +78,6 @@ public class Libro {
     }
     public void setTitulo(String titulo) {
         this.titulo = titulo;
-    }
-    public List<LibroGenero> getgeneros() {
-        return generos;
-    }
-    public void setgeneros(List<LibroGenero> generos) {
-        this.generos = generos;
     }
     public List<LibroAutor> getAutores() {
         return autores;
@@ -84,12 +102,6 @@ public class Libro {
     }
     public void setDRM(boolean dRM) {
         DRM = dRM;
-    }
-    public boolean getActivo() {
-        return activo;
-    }
-    public void setActivo(boolean activo){
-        this.activo=activo;
     }
     public int getDescuento() {
         return descuento;
@@ -133,4 +145,29 @@ public class Libro {
     public void setUrlPortada(String urlPortada) {
         this.urlPortada = urlPortada;
     }
+
+    public List<LibroGenero> getGeneros() {
+        return generos;
+    }
+
+    public void setGeneros(List<LibroGenero> generos) {
+        this.generos = generos;
+    }
+
+    public List<LibroIdioma> getIdiomas() {
+        return idiomas;
+    }
+
+    public void setIdiomas(List<LibroIdioma> idiomas) {
+        this.idiomas = idiomas;
+    }
+
+    public List<LibroEditorial> getEditoriales() {
+        return editoriales;
+    }
+
+    public void setEditoriales(List<LibroEditorial> editoriales) {
+        this.editoriales = editoriales;
+    }
+    
 }

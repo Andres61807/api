@@ -1,6 +1,5 @@
 package tfg.proy.api.service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +8,7 @@ import org.springframework.stereotype.Service;
 import tfg.proy.api.entity.Autor;
 import tfg.proy.api.entity.Genero;
 import tfg.proy.api.entity.Libro;
+import tfg.proy.api.entity.Saga;
 import tfg.proy.api.repository.LibroRepository;
 
 
@@ -26,15 +26,15 @@ public class LibroService {
     public List<Libro> getGenero(List<Genero> a){
         return libroRepository.findByGeneros(a);
     }
-    /*
-    public List<Libro> getAutor(List<Autor> a){
+    
+    public List<Libro> getAutores(List<Autor> a){
 
-        return libros;
+        return libroRepository.findByAutores(a);
     }
-
-    public List<Libro> getSaga(String a){
-  
-        return libros;
+    
+    public List<Libro> getSaga(Saga a){
+        
+        return libroRepository.findBySaga(a);
     }
 
     public Libro get(int id){
@@ -42,9 +42,9 @@ public class LibroService {
     }
 
     public List<Libro> getPrecio(double precio){
-        return libros;
+        return  libroRepository.findByPrecioLessThanEqual(precio);
     }
-    */
+
     //POST
     public Libro create(Libro libro){
         return libroRepository.saveAndFlush(libro);

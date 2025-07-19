@@ -14,20 +14,31 @@ public class Saga {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name="ID_saga")
-    private int id;
+    private Long id;
     private String saga;
-    public int getId() {
-        return id;
+    
+    public Saga() {
     }
-    public void setId(int id) {
+    public Saga(Long id, String saga) {
         this.id = id;
-    }
-    public String getSaga() {
-        return saga;
-    }
-    public void setSaga(String saga) {
         this.saga = saga;
     }
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getSaga() {
+        return saga;
+    }
+
+    public void setSaga(String saga) {
+        this.saga = saga;
+    }
+    
     
 }

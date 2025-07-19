@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import tfg.proy.api.entity.Autor;
 import tfg.proy.api.entity.Genero;
 import tfg.proy.api.entity.Libro;
+import tfg.proy.api.entity.Saga;
 import tfg.proy.api.service.LibroService;
 
 @RestController
@@ -34,14 +35,14 @@ public class LibroController {
     public List<Libro> getGenero(@RequestBody List<Genero> generos){
         return libroService.getGenero(generos);
     }
-    /*
+    
     @GetMapping("/listado/autor")
     public List<Libro> getAutor(@RequestBody List<Autor> autores){
-        return libroService.getAutor(autores);
+        return libroService.getAutores(autores);
     }
-
-    @GetMapping("/listado/{saga}")
-    public List<Libro> getSaga(@PathVariable String saga){
+    
+    @GetMapping("/listado/saga")
+    public List<Libro> getSaga(@RequestBody Saga saga){
         return libroService.getSaga(saga);
     }
 
@@ -54,7 +55,6 @@ public class LibroController {
     public List<Libro> getPrecio(@PathVariable double precio){
         return libroService.getPrecio(precio);
     }
-    */
     
     //Metodos POST 
     @PostMapping
