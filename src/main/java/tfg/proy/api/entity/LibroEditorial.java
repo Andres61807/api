@@ -30,15 +30,17 @@ public class LibroEditorial {
     @Column(name="fecha_baja")
     private LocalDate fechaBaja;
     private boolean avtivo;
+    private double ingreso;
 
     public LibroEditorial() {
     }
-    public LibroEditorial(Libro libro, Editorial editorial, LocalDate fechaAlta, LocalDate fechaBaja, boolean avtivo) {
+    public LibroEditorial(Libro libro, Editorial editorial, LocalDate fechaAlta, LocalDate fechaBaja, boolean avtivo,double ingreso) {
         this.libro = libro;
         this.editorial = editorial;
         this.fechaAlta = fechaAlta;
         this.fechaBaja = fechaBaja;
         this.avtivo = avtivo;
+        this.ingreso=ingreso;
     }
 
 
@@ -71,6 +73,12 @@ public class LibroEditorial {
     }
     public void setAvtivo(boolean avtivo) {
         this.avtivo = avtivo;
+    }
+    public double getIngreso() {
+        return ingreso;
+    }
+    public void setIngreso(double ingreso) {
+        this.ingreso = ingreso;
     }
     
     

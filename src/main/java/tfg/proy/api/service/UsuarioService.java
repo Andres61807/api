@@ -23,6 +23,10 @@ public class UsuarioService {
     public Usuario get(String usuario){
         return usuarioRepository.findByCorreoOrUsuario(usuario, usuario);
     }
+
+    public Usuario get(String usuario,String contraseña){
+        return usuarioRepository.findByCorreoOrUsuario(usuario, usuario);
+    }
      
     public Usuario create(Usuario usuario){
         return usuarioRepository.saveAndFlush(usuario);
