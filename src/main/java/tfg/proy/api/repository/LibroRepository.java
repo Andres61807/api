@@ -3,20 +3,37 @@ package tfg.proy.api.repository;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
-import tfg.proy.api.entity.Autor;
+
 import tfg.proy.api.entity.Genero;
 import tfg.proy.api.entity.Idioma;
 import tfg.proy.api.entity.Libro;
 import tfg.proy.api.entity.Saga;
 
 @Repository
-public interface LibroRepository extends JpaRepository<Libro, Integer>{
+public interface LibroRepository extends JpaRepository<Libro, String>{
 
-    List<Libro> findByGeneros(List<Genero> generos);
-    List<Libro> findByAutores(List<Autor> autor);
-    List<Libro> findByIdiomas(List<Idioma> idioma);
+    @Query("SELECT lg.genero FROM LibroGenero lg WHERE lg.libro.id = :libroId")
+    List<Genero> findGenerosByLibroId(@Param("libroId") String libroId);
+
+    @Query("SELECT lg.libro FROM LibroGenero lg WHERE lg.genero.id = :generoId")
+    List<Libro> findLibrosByGeneroId(@Param("generoId") Long generoId);
+    
+    @Query("SELECT lg.libro FROM LibroAutor lg WHERE lg.autor.id = :autorId")
+    List<Libro> findByAutor(@Param("autorId") Long autorId);
+    
+    @Query("SELECT lg.libro FROM LibroIdioma lg WHERE lg.idioma.id = :idiomaId")
+    List<Libro> findByIdioma(@Param("idiomaId") Long idiomaId);
+    
+    @Query("SELECT lg.libro FROM LibroEditorial lg WHERE lg.editorial.id = :editorialId")
+    List<Libro> findByEditorial(@Param("editorialId") Long editorialId);
+    
     List<Libro> findBySaga(Saga saga);
+    
+    List<Libro> findByIdiomas(List<Idioma> idioma);
+
     List<Libro> findByPrecioLessThanEqual(double precio);
 } 

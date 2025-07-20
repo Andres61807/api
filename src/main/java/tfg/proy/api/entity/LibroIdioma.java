@@ -1,22 +1,27 @@
 package tfg.proy.api.entity;
 
+import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.MapsId;
 import jakarta.persistence.Table;
 
 @Entity
 @Table(name="libro_idioma")
 public class LibroIdioma {
 
-    @Id
+    @EmbeddedId
+    private LibroIdiomaId id;
+
     @ManyToOne
+    @MapsId("libroId")
     @JoinColumn(name="ID_libro")
     private Libro libro;
 
-    @Id
+
     @ManyToOne
+    @MapsId("idiomaId")
     @JoinColumn(name="ID_idioma")
     private Idioma idioma;
 

@@ -15,7 +15,7 @@ import jakarta.persistence.Table;
 public class Genero {
     
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="ID_genero")
     private Long id;
     @Column(unique = true)

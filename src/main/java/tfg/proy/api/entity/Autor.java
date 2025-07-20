@@ -15,21 +15,20 @@ import jakarta.persistence.Table;
 public class Autor {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="ID_autor")
     private Long id;
-    private String nombre;
-    private String apellidos;
+    @Column(unique=true)
+    private String nombreCompleto;
     @OneToMany(mappedBy="autor")
     private List<LibroAutor> libros;
     
     //constructores
     public Autor() {
     }
-    public Autor(Long id, String nombre, String apellidos, List<LibroAutor> libros) {
+    public Autor(Long id, String nombre, List<LibroAutor> libros) {
         this.id = id;
-        this.nombre = nombre;
-        this.apellidos = apellidos;
+        this.nombreCompleto = nombre;
         this.libros = libros;
     }
 
@@ -40,18 +39,13 @@ public class Autor {
     public void setId(Long id) {
         this.id = id;
     }
-    public String getNombre() {
-        return nombre;
+    public String getNombreCompleto() {
+        return nombreCompleto;
     }
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setNombreCompleto(String nombre) {
+        this.nombreCompleto = nombre;
     }
-    public String getApellidos() {
-        return apellidos;
-    }
-    public void setApellidos(String apellidos) {
-        this.apellidos = apellidos;
-    }
+    
     public List<LibroAutor> getLibros() {
         return libros;
     }

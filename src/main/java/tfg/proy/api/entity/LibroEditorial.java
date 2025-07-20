@@ -3,22 +3,26 @@ package tfg.proy.api.entity;
 import java.time.LocalDate;
 
 import jakarta.persistence.Column;
+import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.MapsId;
 import jakarta.persistence.Table;
 
 @Entity
 @Table(name="libro_edit")
 public class LibroEditorial {
 
-    @Id
+    @EmbeddedId
+    private LibroEditorialId libroEditorialId;
+
     @ManyToOne
+    @MapsId("libroId")
     @JoinColumn(name="ID_libro")
     private Libro libro;
-    @Id
     @ManyToOne
+    @MapsId("editorialId")
     @JoinColumn(name="ID_editorial")
     private Editorial editorial;
     @Column(name="fecha_alta")

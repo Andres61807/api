@@ -16,7 +16,7 @@ import jakarta.persistence.Table;
 public class Biblioteca {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="ID_biblioteca")
     private Long id;
     private LocalDate ultimoRegistro;

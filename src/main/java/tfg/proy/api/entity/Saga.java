@@ -12,7 +12,7 @@ import jakarta.persistence.Table;
 public class Saga {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="ID_saga")
     private Long id;
     private String saga;

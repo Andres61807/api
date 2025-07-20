@@ -15,7 +15,7 @@ import jakarta.persistence.Table;
 public class Idioma {
     
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="ID_idioma")
     private Long id;
     @Column(unique = true)

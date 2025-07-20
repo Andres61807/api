@@ -12,10 +12,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import tfg.proy.api.entity.Autor;
-import tfg.proy.api.entity.Genero;
+
 import tfg.proy.api.entity.Libro;
-import tfg.proy.api.entity.Saga;
 import tfg.proy.api.service.LibroService;
 
 @RestController
@@ -25,50 +23,72 @@ public class LibroController {
     @Autowired
     private LibroService libroService;
 
-    //Metodos GET 
+    //Metodos GET
+    //Listar todos los libros 
     @GetMapping("/listado")
     public List<Libro> get(){
         return libroService.getAll();
     }
     
-    @GetMapping("/listado/genero")
-    public List<Libro> getGenero(@RequestBody List<Genero> generos){
-        return libroService.getGenero(generos);
+    //obtener libros por genero 
+    @GetMapping("/listado/genero/{genero}")
+    public List<Libro> getGenero(@PathVariable String genero){
+        return libroService.getLibrosGenero(genero);
+    }
+
+    //Obtener los libros por autor 
+    @GetMapping("/listado/autor/{nombre}")
+    public List<Libro> getAutor(@PathVariable String nombre){
+        return libroService.getAutor(nombre);
     }
     
-    @GetMapping("/listado/autor")
-    public List<Libro> getAutor(@RequestBody List<Autor> autores){
-        return libroService.getAutores(autores);
-    }
     
-    @GetMapping("/listado/saga")
-    public List<Libro> getSaga(@RequestBody Saga saga){
+    //Obtener libros por editorial 
+    @GetMapping("/listado/editorial/{nombre}")
+    public List<Libro> getEditorial(@PathVariable String nombre){
+        return libroService.getEditorial(nombre);
+    }
+
+    //obtener los libros por saga 
+    @GetMapping("/listado/saga/{saga}")
+    public List<Libro> getSaga(@PathVariable String saga){
         return libroService.getSaga(saga);
     }
 
+    //obtener listado de libros por idioma
+    @GetMapping("/listado/idioma/{idioma}")
+    public List<Libro> getIdioma(@PathVariable String idioma){
+        return libroService.getIdioma(idioma);
+    }
+
+    //obtener libros por id
     @GetMapping("/{id}")
-    public Libro get(@PathVariable int id){
+    public Libro get(@PathVariable String id){
         return libroService.get(id);
     }
-     
+
+    //Obtener libros por precio
     @GetMapping("/listado/{precio}")
     public List<Libro> getPrecio(@PathVariable double precio){
         return libroService.getPrecio(precio);
     }
     
     //Metodos POST 
+    //Crear un libro
     @PostMapping
     public Libro create(@RequestBody Libro libro){
         return libroService.create(libro);
     }
-
+    
     //Metodso PATCH
+    //Actualizar un libro
     @PatchMapping
     public void update(@RequestBody Libro libro){
         libroService.update(libro);
     }
 
     //Metodos DELETE
+    //Borrar un libro
     @DeleteMapping
     public void delete(@RequestBody Libro libro){
         libroService.delete(libro);

@@ -4,6 +4,8 @@ import java.util.List;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
@@ -17,8 +19,9 @@ public class Editorial {
     
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="ID_editorial")
-    private String id;
+    private Long id;
     private String nombre;
     private String direccion;
     @Column(unique = true)
@@ -33,11 +36,12 @@ public class Editorial {
     @OneToOne(optional = true)
     @JoinColumn(name="ID_editorial")
     private Usuario usuarioFK;
+    private String nif;
     
     public Editorial() {
     }
-    public Editorial(String id, String nombre, String direccion, String correo, String telefono, String contacto,
-            String web,List<LibroEditorial> libros) {
+    public Editorial(Long id, String nombre, String direccion, String correo, String telefono, String contacto,
+            String web,List<LibroEditorial> libros,String nif) {
         this.id = id;
         this.nombre = nombre;
         this.direccion = direccion;
@@ -46,12 +50,13 @@ public class Editorial {
         this.contacto = contacto;
         this.web = web;
         this.libros=libros;
+        this.nif=nif;
     }
 
-    public String getId() {
+    public Long getId() {
         return id;
     }
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
     public String getNombre() {
@@ -95,6 +100,18 @@ public class Editorial {
     }
     public void setLibros(List<LibroEditorial> libros) {
         this.libros = libros;
+    }
+    public Usuario getUsuarioFK() {
+        return usuarioFK;
+    }
+    public void setUsuarioFK(Usuario usuarioFK) {
+        this.usuarioFK = usuarioFK;
+    }
+    public String getNif() {
+        return nif;
+    }
+    public void setNif(String nif) {
+        this.nif = nif;
     }
     
     

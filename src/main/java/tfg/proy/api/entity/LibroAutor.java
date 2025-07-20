@@ -1,21 +1,29 @@
 package tfg.proy.api.entity;
 
+import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.MapsId;
 import jakarta.persistence.Table;
+
+
 
 @Entity
 @Table(name="libro_autor")
 public class LibroAutor {
 
-    @Id
+    @EmbeddedId
+    private LibroAutorId libroAutorId;
+
+    
     @ManyToOne
+    @MapsId("libroId")
     @JoinColumn(name="ID_libro")
     private Libro libro;
-    @Id
+    
     @ManyToOne
+    @MapsId("autorId")
     @JoinColumn(name="ID_autor")
     private Autor autor;
 
@@ -23,9 +31,10 @@ public class LibroAutor {
     public LibroAutor() {
     }
     
-    public LibroAutor(Libro libro, Autor autor) {
+    public LibroAutor(LibroAutorId libroAutorId,Libro libro, Autor autor) {
         this.libro = libro;
         this.autor = autor;
+        this.libroAutorId=libroAutorId;
     }
 
     public Libro getLibro() {
@@ -39,6 +48,14 @@ public class LibroAutor {
     }
     public void setAutor(Autor autor) {
         this.autor = autor;
+    }
+
+    public LibroAutorId getLibroAutorId() {
+        return libroAutorId;
+    }
+
+    public void setLibroAutorId(LibroAutorId libroAutorId) {
+        this.libroAutorId = libroAutorId;
     }
     
 }
