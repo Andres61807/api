@@ -2,6 +2,8 @@ package tfg.proy.api.entity;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -35,6 +37,7 @@ public class Editorial {
     private List<LibroEditorial> libros;
     @OneToOne(optional = true)
     @JoinColumn(name="ID_editorial")
+    @JsonIgnore
     private Usuario usuarioFK;
     private String nif;
     
