@@ -26,21 +26,17 @@ public class UsuarioController {
     public Usuario get(@PathVariable Long id){
         return usuarioService.get(id);
     }
-
-    //comrpobar si un correo o usuario ya esta en uso
-    @GetMapping("/comprobacion/{usuario}")
-    public Boolean get(@PathVariable String usuario){
-        
-        if(usuarioService.get(usuario)!=null){
-            return true;
-        }
-        return false;
-    }
     
-    //comprobar credenciales de registro de un usuario  
-    @GetMapping("/login/{usuario}/{contraseña}")
-    public Usuario get(@PathVariable String usuario,@PathVariable String contraseña){
-        return usuarioService.get(usuario);
+    //comprobar que el usuario o el correo no esten ya registrados   
+    @GetMapping("/credenciales/{usuario}")
+    public Usuario getCredenciales(@PathVariable String usuario){
+        return usuarioService.getCredenciales(usuario);
+    }
+
+    //comprobar los datos de login del usuario
+    @GetMapping("/login/{usuario}/{pass}")
+    public Usuario getLogin(@PathVariable String usuario,@PathVariable String pass){
+        return usuarioService.getLogin(usuario,pass);
     }
 
     //POST

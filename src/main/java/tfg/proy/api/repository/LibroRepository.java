@@ -17,7 +17,7 @@ import tfg.proy.api.entity.Saga;
 public interface LibroRepository extends JpaRepository<Libro, String>{
 
     @Query("SELECT lg.genero FROM LibroGenero lg WHERE lg.libro.id = :libroId")
-    List<Genero> findGenerosByLibroId(@Param("libroId") String libroId);
+    List<Genero> findGenerosByLibroId(@Param("libroId") Long libroId);
 
     @Query("SELECT lg.libro FROM LibroGenero lg WHERE lg.genero.id = :generoId")
     List<Libro> findLibrosByGeneroId(@Param("generoId") Long generoId);

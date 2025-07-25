@@ -9,21 +9,21 @@ import jakarta.persistence.Embeddable;
 public class LibroEditorialId implements Serializable {
 
     @Column(name="ID_libro")
-    private String libroId; 
+    private Long libroId; 
     @Column(name="ID_editorial")
     private Long editorialId;
     
     public LibroEditorialId() {
     }
-    public LibroEditorialId(String libroId, Long editorialId) {
+    public LibroEditorialId(Long libroId, Long editorialId) {
         this.libroId = libroId;
         this.editorialId = editorialId;
     }
 
-    public String getLibroId() {
+    public Long getLibroId() {
         return libroId;
     }
-    public void setLibroId(String libroId) {
+    public void setLibroId(Long libroId) {
         this.libroId = libroId;
     }
     public Long getEditorialId() {

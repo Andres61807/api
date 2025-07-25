@@ -10,20 +10,20 @@ public class LibroAutorId implements Serializable {
     
     
     @Column(name="ID_libro")
-    private String libroId;  
+    private Long libroId;  
     @Column(name="ID_autor")
     private Long autorId;
     
     public LibroAutorId() {
     }
-    public LibroAutorId(String libroId, Long autorId) {
+    public LibroAutorId(Long libroId, Long autorId) {
         this.libroId = libroId;
         this.autorId = autorId;
     }
-    public String getLibroId() {
+    public Long getLibroId() {
         return libroId;
     }
-    public void setLibroId(String libroId) {
+    public void setLibroId(Long libroId) {
         this.libroId = libroId;
     }
     public Long getAutorId() {

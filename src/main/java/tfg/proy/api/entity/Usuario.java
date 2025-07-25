@@ -30,7 +30,7 @@ public class Usuario {
     private String semilla;
     private LocalDate fecha_registro;
     private LocalDate ultimo_registro;
-    @OneToOne(optional = true)
+    @OneToOne(optional = true,mappedBy = "usuarioFK")
     private Editorial editorial;
 
     public Usuario() {

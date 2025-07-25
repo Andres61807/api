@@ -20,12 +20,12 @@ public class UsuarioService {
         return usuario;
     }
     
-    public Usuario get(String usuario){
-        return usuarioRepository.findByCorreoOrUsuario(usuario, usuario);
+    public Usuario getLogin(String usuario,String pass){
+        return usuarioRepository.findByUsuarioOrCorreoAndPass(usuario, pass);
     }
 
-    public Usuario get(String usuario,String contraseña){
-        return usuarioRepository.findByCorreoOrUsuario(usuario, usuario);
+    public Usuario getCredenciales(String usuario){
+        return usuarioRepository.findByCorreoOrUsuario(usuario,usuario);
     }
      
     public Usuario create(Usuario usuario){

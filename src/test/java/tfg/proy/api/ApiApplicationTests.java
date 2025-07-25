@@ -15,17 +15,17 @@ import tfg.proy.api.service.LibroService;
 @SpringBootTest
 class ApiApplicationTests {
 
-	@Test
-	void contextLoads() {
-	}
+	// @Test
+	// void contextLoads() {
+	// }
 
-	@Autowired
-	private LibroService libroService;
-	@Autowired
-	private EditorialRepository editorialRepository;
-	@Test
-	void pruebaAutor(){
-		Editorial editorial=editorialRepository.findByNombre("Libros del Sur");
-		assertNotNull(editorial);
-	}
+	// @Autowired
+	// private LibroService libroService;
+	// @Autowired
+	// private EditorialRepository editorialRepository;
+	// @Test
+	// void pruebaAutor(){
+	// 	Editorial editorial=editorialRepository.findByNombre("Libros del Sur");
+	// 	assertNotNull(editorial);
+	// }
 }

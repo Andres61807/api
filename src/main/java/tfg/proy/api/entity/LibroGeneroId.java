@@ -9,23 +9,23 @@ import jakarta.persistence.Embeddable;
 public class LibroGeneroId implements Serializable {
 
     @Column(name="ID_libro")
-    private String libroId;  
+    private Long libroId;  
     @Column(name="ID_genero")
     private Long generoId; 
     
     public LibroGeneroId() {
     }
-    public LibroGeneroId(String libroId, Long generoId) {
+    public LibroGeneroId(Long libroId, Long generoId) {
         this.libroId = libroId;
         this.generoId = generoId;
     }
 
    
-    public String getLibroId() {
+    public Long getLibroId() {
         return libroId;
     }
 
-    public void setLibroId(String libroId) {
+    public void setLibroId(Long libroId) {
         this.libroId = libroId;
     }
 

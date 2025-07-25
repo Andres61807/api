@@ -36,7 +36,7 @@ public class Editorial {
     @OneToMany(mappedBy = "editorial")
     private List<LibroEditorial> libros;
     @OneToOne(optional = true)
-    @JoinColumn(name="ID_editorial")
+    @JoinColumn(name="ID_usuario")
     @JsonIgnore
     private Usuario usuarioFK;
     private String nif;

@@ -4,6 +4,8 @@ import java.util.List;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
@@ -15,8 +17,11 @@ import jakarta.persistence.Table;
 public class Libro {
     
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="ID_libro")
-    private String id;
+    private Long id;
+    @Column(name="isbn",unique = true,nullable = false)
+    private String isbn;
     private String titulo;
     @OneToMany(mappedBy="libro")
     private List<LibroGenero> generos;
@@ -45,9 +50,9 @@ public class Libro {
     public Libro() {
     }  
 
-    public Libro(String id, String titulo, List<LibroGenero> generos, List<LibroAutor> autores, Saga saga,
+    public Libro(Long id, String titulo, List<LibroGenero> generos, List<LibroAutor> autores, Saga saga,
             List<LibroIdioma> idiomas, double precio, int descuento, boolean dRM, int nPaginas, String sinopsis,
-            Double valoracion, int nVotos, String urlLibro, String urlPortada,List<LibroEditorial> editoriales) {
+            Double valoracion, int nVotos, String urlLibro, String urlPortada,List<LibroEditorial> editoriales,String isbn) {
         this.id = id;
         this.titulo = titulo;
         this.generos = generos;
@@ -64,13 +69,14 @@ public class Libro {
         this.urlLibro = urlLibro;
         this.urlPortada = urlPortada;
         this.editoriales=editoriales;
+        this.isbn=isbn;
     }
 
 
-    public String getId() {
+    public Long getId() {
         return id;
     }
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
     public String getTitulo() {
@@ -168,6 +174,14 @@ public class Libro {
 
     public void setEditoriales(List<LibroEditorial> editoriales) {
         this.editoriales = editoriales;
+    }
+
+    public String getIsbn() {
+        return isbn;
+    }
+
+    public void setIsbn(String isbn) {
+        this.isbn = isbn;
     }
     
 }
