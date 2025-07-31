@@ -1,6 +1,7 @@
 package tfg.proy.api.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
@@ -8,6 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import tfg.proy.api.entity.Usuario;
@@ -29,14 +31,20 @@ public class UsuarioController {
     
     //comprobar que el usuario o el correo no esten ya registrados   
     @GetMapping("/credenciales/{usuario}")
-    public Usuario getCredenciales(@PathVariable String usuario){
-        return usuarioService.getCredenciales(usuario);
+    public ResponseEntity<Usuario> getCredenciales(@PathVariable String usuario){
+        Usuario user=usuarioService.getCredenciales(usuario);
+        if (user!=null)
+            return ResponseEntity.ok(user);
+        return ResponseEntity.notFound().build();
     }
 
     //comprobar los datos de login del usuario
-    @GetMapping("/login/{usuario}/{pass}")
-    public Usuario getLogin(@PathVariable String usuario,@PathVariable String pass){
-        return usuarioService.getLogin(usuario,pass);
+    @GetMapping("/login")
+    public  ResponseEntity<Usuario> getLogin(@RequestParam String usuario,@RequestParam String pass){
+        Usuario user=usuarioService.getLogin(usuario,pass);
+        if (user!=null)
+            return ResponseEntity.ok(user);
+        return ResponseEntity.notFound().build();
     }
 
     //POST
@@ -47,8 +55,10 @@ public class UsuarioController {
 
     //PATCH
     @PatchMapping
-    public void update(@RequestBody Usuario usuario){
-        usuarioService.update(usuario);
+    public ResponseEntity<Usuario> update(@RequestBody Usuario usuario){
+        if(usuario.getId()==null)
+            return ResponseEntity.badRequest().build();
+        return ResponseEntity.ok(usuarioService.update(usuario));
     }
 
     //DELETE

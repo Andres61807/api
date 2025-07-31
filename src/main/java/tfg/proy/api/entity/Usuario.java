@@ -2,6 +2,7 @@ package tfg.proy.api.entity;
 
 import java.time.LocalDate;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -18,7 +19,7 @@ public class Usuario {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="ID_usuario")
+    @Column(name="id_usuario")
     private Long id;
     private String nombre;
     private String apellidos;
@@ -32,12 +33,15 @@ public class Usuario {
     private LocalDate ultimo_registro;
     @OneToOne(optional = true,mappedBy = "usuarioFK")
     private Editorial editorial;
+    @OneToOne(mappedBy = "usuario")
+    @JsonIgnoreProperties("usuario")
+    private Biblioteca biblioteca;
 
     public Usuario() {
     }
 
     public Usuario(Long id, String nombre, String apellidos, String usuario, String correo, String pass, String semilla,
-            LocalDate fecha_registro, LocalDate ultimo_registro, Editorial editorial) {
+            LocalDate fecha_registro, LocalDate ultimo_registro, Editorial editorial,Biblioteca bilioteca) {
         this.id = id;
         this.nombre = nombre;
         this.apellidos = apellidos;
@@ -48,6 +52,7 @@ public class Usuario {
         this.fecha_registro = fecha_registro;
         this.ultimo_registro = ultimo_registro;
         this.editorial = editorial;
+        this.biblioteca=bilioteca;
     }
 
     public Long getId() {
@@ -129,6 +134,14 @@ public class Usuario {
     public void setEditorial(Editorial editorial) {
         this.editorial = editorial;
     }
-     
+
+    public Biblioteca getBiblioteca() {
+        return biblioteca;
+    }
+
+    public void setBiblioteca(Biblioteca biblioteca) {
+        this.biblioteca = biblioteca;
+    }
+    
     
 }

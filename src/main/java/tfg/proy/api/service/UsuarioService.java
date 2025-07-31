@@ -25,18 +25,18 @@ public class UsuarioService {
     }
 
     public Usuario getCredenciales(String usuario){
-        return usuarioRepository.findByCorreoOrUsuario(usuario,usuario);
+        return usuarioRepository.findByCorreoOrUsuario(usuario, usuario);
     }
      
     public Usuario create(Usuario usuario){
-        return usuarioRepository.saveAndFlush(usuario);
+        return usuarioRepository.save(usuario);
     }
 
-    public void update(Usuario usuario){
-        //TODO - 
+    public Usuario update(Usuario usuario){
+        return usuarioRepository.save(usuario); 
     }
 
     public void delete(Usuario usuario){
-        //TODO - 
+        usuarioRepository.deleteById(usuario.getId());
     }
 }

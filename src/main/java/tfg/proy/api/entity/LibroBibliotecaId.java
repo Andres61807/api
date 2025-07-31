@@ -6,40 +6,47 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
 
 @Embeddable
-public class LibroEditorialId implements Serializable {
+public class LibroBibliotecaId implements Serializable{
 
     @Column(name="id_libro")
-    private Long libroId; 
-    @Column(name="id_editorial")
-    private Long editorialId;
-    
-    public LibroEditorialId() {
+    private Long libroId;  
+
+    @Column(name="id_biblioteca")
+    private Long bibliotecaId;
+
+    public LibroBibliotecaId() {
     }
-    public LibroEditorialId(Long libroId, Long editorialId) {
+
+    public LibroBibliotecaId(Long libroId, Long bibliotecaId) {
         this.libroId = libroId;
-        this.editorialId = editorialId;
+        this.bibliotecaId = bibliotecaId;
     }
 
     public Long getLibroId() {
         return libroId;
     }
+
     public void setLibroId(Long libroId) {
         this.libroId = libroId;
     }
-    public Long getEditorialId() {
-        return editorialId;
+
+    public Long getBibliotecaId() {
+        return bibliotecaId;
     }
-    public void setEditorialId(Long editorialId) {
-        this.editorialId = editorialId;
+
+    public void setBibliotecaId(Long bibliotecaId) {
+        this.bibliotecaId = bibliotecaId;
     }
+
     @Override
     public int hashCode() {
         final int prime = 31;
         int result = 1;
         result = prime * result + ((libroId == null) ? 0 : libroId.hashCode());
-        result = prime * result + ((editorialId == null) ? 0 : editorialId.hashCode());
+        result = prime * result + ((bibliotecaId == null) ? 0 : bibliotecaId.hashCode());
         return result;
     }
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj)
@@ -48,20 +55,19 @@ public class LibroEditorialId implements Serializable {
             return false;
         if (getClass() != obj.getClass())
             return false;
-        LibroEditorialId other = (LibroEditorialId) obj;
+        LibroBibliotecaId other = (LibroBibliotecaId) obj;
         if (libroId == null) {
             if (other.libroId != null)
                 return false;
         } else if (!libroId.equals(other.libroId))
             return false;
-        if (editorialId == null) {
-            if (other.editorialId != null)
+        if (bibliotecaId == null) {
+            if (other.bibliotecaId != null)
                 return false;
-        } else if (!editorialId.equals(other.editorialId))
+        } else if (!bibliotecaId.equals(other.bibliotecaId))
             return false;
         return true;
     }
-    
     
     
 }

@@ -14,7 +14,7 @@ import tfg.proy.api.entity.Libro;
 import tfg.proy.api.entity.Saga;
 
 @Repository
-public interface LibroRepository extends JpaRepository<Libro, String>{
+public interface LibroRepository extends JpaRepository<Libro, Long>{
 
     @Query("SELECT lg.genero FROM LibroGenero lg WHERE lg.libro.id = :libroId")
     List<Genero> findGenerosByLibroId(@Param("libroId") Long libroId);
@@ -31,6 +31,9 @@ public interface LibroRepository extends JpaRepository<Libro, String>{
     @Query("SELECT lg.libro FROM LibroEditorial lg WHERE lg.editorial.id = :editorialId")
     List<Libro> findByEditorial(@Param("editorialId") Long editorialId);
     
+    @Query("SELECT lb.libro FROM LibroBiblioteca lb WHERE lb.biblioteca.id = :bibliotecaId")
+    List<Libro> findLibrosByBibliotecaId(@Param("bibliotecaId") Long bibliotecaId);
+
     List<Libro> findBySaga(Saga saga);
     
     List<Libro> findByIdiomas(List<Idioma> idioma);

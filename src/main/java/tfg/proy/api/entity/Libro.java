@@ -1,9 +1,14 @@
 package tfg.proy.api.entity;
 
+import java.time.LocalDate;
 import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -18,19 +23,22 @@ public class Libro {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="ID_libro")
+    @Column(name="id_libro")
     private Long id;
     @Column(name="isbn",unique = true,nullable = false)
     private String isbn;
     private String titulo;
-    @OneToMany(mappedBy="libro")
+    @OneToMany(mappedBy="libro" ,fetch=FetchType.EAGER)
+    @JsonIgnoreProperties("libro")
     private List<LibroGenero> generos;
-    @OneToMany(mappedBy="libro")
+    @OneToMany(mappedBy="libro",fetch=FetchType.EAGER)
+    @JsonIgnoreProperties("libro")
     private List<LibroAutor> autores;
     @ManyToOne
-    @JoinColumn(name="ID_saga")
+    @JoinColumn(name="id_saga")
     private Saga saga;
-    @OneToMany(mappedBy="libro")
+    @OneToMany(mappedBy="libro",fetch=FetchType.EAGER)
+    @JsonIgnoreProperties("libro")
     private List<LibroIdioma> idiomas;
     private double precio;
     private int descuento;
@@ -39,6 +47,7 @@ public class Libro {
     private int nPaginas;
     private String sinopsis;
     private Double valoracion;
+    private LocalDate fechaPublicacion;
     @Column(name="n_votos")
     private int nVotos;
     @Column(name="URLibro", unique = true)
@@ -46,13 +55,17 @@ public class Libro {
     @Column(name="URLportada")
     private String urlPortada;
     @OneToMany(mappedBy = "libro")
+    @JsonIgnore
     private List<LibroEditorial> editoriales;
+    @OneToMany
+    @JsonIgnore
+    private List<LibroBiblioteca> bibliotecas;
     public Libro() {
     }  
 
     public Libro(Long id, String titulo, List<LibroGenero> generos, List<LibroAutor> autores, Saga saga,
             List<LibroIdioma> idiomas, double precio, int descuento, boolean dRM, int nPaginas, String sinopsis,
-            Double valoracion, int nVotos, String urlLibro, String urlPortada,List<LibroEditorial> editoriales,String isbn) {
+            Double valoracion, int nVotos, String urlLibro, String urlPortada,List<LibroEditorial> editoriales,String isbn,LocalDate fechaPublicacion,List<LibroBiblioteca> bibliotecas) {
         this.id = id;
         this.titulo = titulo;
         this.generos = generos;
@@ -70,6 +83,8 @@ public class Libro {
         this.urlPortada = urlPortada;
         this.editoriales=editoriales;
         this.isbn=isbn;
+        this.fechaPublicacion=fechaPublicacion;
+        this.bibliotecas=bibliotecas;
     }
 
 
@@ -183,5 +198,22 @@ public class Libro {
     public void setIsbn(String isbn) {
         this.isbn = isbn;
     }
+
+    public LocalDate getFechaPublicacion() {
+        return fechaPublicacion;
+    }
+
+    public void setFechaPublicacion(LocalDate fechaPublicacion) {
+        this.fechaPublicacion = fechaPublicacion;
+    }
+
+    public List<LibroBiblioteca> getBibliotecas() {
+        return bibliotecas;
+    }
+
+    public void setBibliotecas(List<LibroBiblioteca> bibliotecas) {
+        this.bibliotecas = bibliotecas;
+    }
+    
     
 }

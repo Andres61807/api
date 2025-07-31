@@ -2,9 +2,12 @@ package tfg.proy.api.entity;
 
 import java.time.LocalDate;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.MapsId;
@@ -17,9 +20,10 @@ public class LibroEditorial {
     @EmbeddedId
     private LibroEditorialId libroEditorialId;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @MapsId("libroId")
     @JoinColumn(name="ID_libro")
+    @JsonIgnoreProperties({"generos", "autores", "idiomas", "editoriales"})
     private Libro libro;
     @ManyToOne
     @MapsId("editorialId")

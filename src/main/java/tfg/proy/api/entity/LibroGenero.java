@@ -1,7 +1,10 @@
 package tfg.proy.api.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.MapsId;
@@ -15,13 +18,16 @@ public class LibroGenero {
     @EmbeddedId
     private LibroGeneroId id;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @MapsId("libroId")
-    @JoinColumn(name="ID_libro")
+    @JoinColumn(name="id_libro")
+    @JsonIgnoreProperties({"generos", "autores", "idiomas", "editoriales"})
     private Libro libro;
-    @ManyToOne
+
+    @ManyToOne(fetch = FetchType.EAGER)
     @MapsId("generoId")
-    @JoinColumn(name="ID_genero")
+    @JoinColumn(name="id_genero")
+    @JsonIgnoreProperties("libros")
     private Genero genero;
 
     public LibroGenero() {

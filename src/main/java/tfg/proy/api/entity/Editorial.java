@@ -22,7 +22,7 @@ public class Editorial {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="ID_editorial")
+    @Column(name="id_editorial")
     private Long id;
     private String nombre;
     private String direccion;
@@ -36,7 +36,7 @@ public class Editorial {
     @OneToMany(mappedBy = "editorial")
     private List<LibroEditorial> libros;
     @OneToOne(optional = true)
-    @JoinColumn(name="ID_usuario")
+    @JoinColumn(name="id_usuario")
     @JsonIgnore
     private Usuario usuarioFK;
     private String nif;

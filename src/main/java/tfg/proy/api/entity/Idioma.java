@@ -2,8 +2,11 @@ package tfg.proy.api.entity;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -16,11 +19,12 @@ public class Idioma {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="ID_idioma")
+    @Column(name="id_idioma")
     private Long id;
     @Column(unique = true)
     private String idioma;
-    @OneToMany(mappedBy = "idioma")
+    @OneToMany(mappedBy = "idioma",fetch = FetchType.EAGER)
+    @JsonIgnoreProperties("idioma")
     private List<LibroIdioma> libros;
     
     public Idioma() {

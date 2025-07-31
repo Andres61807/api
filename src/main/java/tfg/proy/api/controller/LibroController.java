@@ -30,6 +30,12 @@ public class LibroController {
         return libroService.getAll();
     }
     
+    //obtener libros por usuario
+    @GetMapping("/listado/biblioteca/{id}")
+    public List<Libro> findLibrosByBiblioteca(@PathVariable long id){
+        return libroService.getByBiblioteca(Long.valueOf(id));
+    }
+    
     //obtener libros por genero 
     @GetMapping("/listado/genero/{genero}")
     public List<Libro> getGenero(@PathVariable String genero){
@@ -63,8 +69,8 @@ public class LibroController {
 
     //obtener libros por id
     @GetMapping("/{id}")
-    public Libro get(@PathVariable String id){
-        return libroService.get(id);
+    public Libro get(@PathVariable long id){
+        return libroService.get(Long.valueOf(id));
     }
 
     //Obtener libros por precio

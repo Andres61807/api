@@ -2,8 +2,11 @@ package tfg.proy.api.entity;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -16,11 +19,12 @@ public class Genero {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="ID_genero")
+    @Column(name="id_genero")
     private Long id;
     @Column(unique = true)
     private String genero;
-    @OneToMany(mappedBy="genero")
+    @OneToMany(mappedBy="genero",fetch = FetchType.EAGER)
+    @JsonIgnoreProperties("genero")
     private List<LibroGenero> libros;
     
     public Genero() {

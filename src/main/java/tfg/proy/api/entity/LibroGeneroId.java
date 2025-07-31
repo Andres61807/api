@@ -8,9 +8,9 @@ import jakarta.persistence.Embeddable;
 @Embeddable
 public class LibroGeneroId implements Serializable {
 
-    @Column(name="ID_libro")
+    @Column(name="id_libro")
     private Long libroId;  
-    @Column(name="ID_genero")
+    @Column(name="id_genero")
     private Long generoId; 
     
     public LibroGeneroId() {

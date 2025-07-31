@@ -35,12 +35,20 @@ public class LibroService {
     @Autowired
     private SagaRepository sagaRepository;
 
+
     //GET
     //obtiene todos los libros
     public List<Libro> getAll(){
         return libroRepository.findAll();
     }   
     
+    //lista todos los libros por una biblioteca
+    public List<Libro> getByBiblioteca(Long id){
+        return libroRepository.findLibrosByBibliotecaId(id);
+    }
+
+    
+
     //Lista todos los libros por un genero
     public List<Libro> getLibrosGenero(String genero){
         Genero gen=generoRepository.findByGenero(genero);
@@ -76,7 +84,7 @@ public class LibroService {
         return libroRepository.findBySaga(sag);
     }
 
-    public Libro get(String id){
+    public Libro get(Long id){
         return libroRepository.findById(id).orElse(null);
     }
 

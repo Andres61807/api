@@ -13,7 +13,7 @@ public class Saga {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="ID_saga")
+    @Column(name="id_saga")
     private Long id;
     private String saga;
     
