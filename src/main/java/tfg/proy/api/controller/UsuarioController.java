@@ -49,8 +49,10 @@ public class UsuarioController {
 
     //POST
     @PostMapping
-    public Usuario create(@RequestBody Usuario usuario){
-        return usuarioService.create(usuario);
+    public ResponseEntity<Usuario> create(@RequestBody Usuario usuario){
+        if(usuario.getId()!=null)
+            return ResponseEntity.badRequest().build();
+        return ResponseEntity.ok(usuarioService.create(usuario));
     }
 
     //PATCH

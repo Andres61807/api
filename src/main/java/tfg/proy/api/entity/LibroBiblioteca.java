@@ -1,5 +1,7 @@
 package tfg.proy.api.entity;
 
+import java.time.LocalDate;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import jakarta.persistence.EmbeddedId;
@@ -28,15 +30,24 @@ public class LibroBiblioteca {
     @JoinColumn(name="id_biblioteca")
     @JsonIgnoreProperties("libros")
     private Biblioteca biblioteca;
+    private double precioCompra;
+    private LocalDate fechaCompra;
 
     public LibroBiblioteca() {
     }
 
-    public LibroBiblioteca(LibroBibliotecaId libroBibliotecaId, Libro libro, Biblioteca biblioteca) {
+    
+
+    public LibroBiblioteca(LibroBibliotecaId libroBibliotecaId, Libro libro, Biblioteca biblioteca, double precioCompra,
+            LocalDate fechaCompra) {
         this.libroBibliotecaId = libroBibliotecaId;
         this.libro = libro;
         this.biblioteca = biblioteca;
+        this.precioCompra = precioCompra;
+        this.fechaCompra = fechaCompra;
     }
+
+
 
     public LibroBibliotecaId getLibroBibliotecaId() {
         return libroBibliotecaId;
@@ -60,6 +71,28 @@ public class LibroBiblioteca {
 
     public void setBiblioteca(Biblioteca biblioteca) {
         this.biblioteca = biblioteca;
+    }
+
+    public double getPrecioCompra() {
+        return precioCompra;
+    }
+
+
+
+    public void setPrecioCompra(double precioCompra) {
+        this.precioCompra = precioCompra;
+    }
+
+
+
+    public LocalDate getFechaCompra() {
+        return fechaCompra;
+    }
+
+
+
+    public void setFechaCompra(LocalDate fechaCompra) {
+        this.fechaCompra = fechaCompra;
     }
     
     
