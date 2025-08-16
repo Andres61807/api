@@ -17,7 +17,7 @@ public class LibroIdioma {
     @EmbeddedId
     private LibroIdiomaId id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @MapsId("libroId")
     @JoinColumn(name="id_libro")
     @JsonIgnoreProperties({"generos", "autores", "idiomas", "editoriales"})

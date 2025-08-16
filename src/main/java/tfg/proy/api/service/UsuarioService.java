@@ -2,11 +2,13 @@ package tfg.proy.api.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import tfg.proy.api.entity.Usuario;
 import tfg.proy.api.repository.UsuarioRepository;
 
 @Service
+@Transactional
 public class UsuarioService {
     
     @Autowired
@@ -36,7 +38,7 @@ public class UsuarioService {
         return usuarioRepository.save(usuario); 
     }
 
-    public void delete(Usuario usuario){
-        usuarioRepository.deleteById(usuario.getId());
+    public void delete(Long id){
+        usuarioRepository.deleteById(id);
     }
 }

@@ -30,7 +30,7 @@ public class LibroBiblioteca {
     @JoinColumn(name="id_biblioteca")
     @JsonIgnoreProperties("libros")
     private Biblioteca biblioteca;
-    private double precioCompra;
+    private Double precioCompra;
     private LocalDate fechaCompra;
 
     public LibroBiblioteca() {

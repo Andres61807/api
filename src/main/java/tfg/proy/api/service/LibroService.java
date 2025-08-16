@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
+import org.springframework.transaction.annotation.Transactional;
 
 import tfg.proy.api.entity.Autor;
 import tfg.proy.api.entity.Editorial;
@@ -20,6 +20,7 @@ import tfg.proy.api.repository.GeneroRepository;
 import tfg.proy.api.repository.IdiomaRepository;
 
 @Service
+@Transactional
 public class LibroService {
     
     @Autowired

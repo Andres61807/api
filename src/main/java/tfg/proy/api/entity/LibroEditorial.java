@@ -20,12 +20,12 @@ public class LibroEditorial {
     @EmbeddedId
     private LibroEditorialId libroEditorialId;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @MapsId("libroId")
     @JoinColumn(name="ID_libro")
     @JsonIgnoreProperties({"generos", "autores", "idiomas", "editoriales"})
     private Libro libro;
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @MapsId("editorialId")
     @JoinColumn(name="ID_editorial")
     private Editorial editorial;

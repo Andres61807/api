@@ -3,9 +3,11 @@ package tfg.proy.api.entity;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -18,8 +20,6 @@ import jakarta.persistence.Table;
 @Table(name="editorial")
 public class Editorial {
     
-    
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id_editorial")
@@ -35,9 +35,9 @@ public class Editorial {
     private String web;
     @OneToMany(mappedBy = "editorial")
     private List<LibroEditorial> libros;
-    @OneToOne(optional = true)
+    @OneToOne(optional = true, fetch = FetchType.EAGER)
     @JoinColumn(name="id_usuario")
-    @JsonIgnore
+    @JsonIgnoreProperties("editorial")
     private Usuario usuarioFK;
     private String nif;
     

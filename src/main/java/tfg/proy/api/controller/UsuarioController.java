@@ -25,8 +25,11 @@ public class UsuarioController {
     //GET
     //Obtener usuario por id
     @GetMapping("/{id}")
-    public Usuario get(@PathVariable Long id){
-        return usuarioService.get(id);
+    public ResponseEntity<Usuario> get(@PathVariable Long id){
+        Usuario user=usuarioService.get(id);
+        if (user!=null)
+            return ResponseEntity.ok(user);
+        return ResponseEntity.notFound().build();
     }
     
     //comprobar que el usuario o el correo no esten ya registrados   
@@ -51,7 +54,7 @@ public class UsuarioController {
     @PostMapping
     public ResponseEntity<Usuario> create(@RequestBody Usuario usuario){
         if(usuario.getId()!=null)
-            return ResponseEntity.badRequest().build();
+            throw new SecurityCreationException("Intento de crear un usuario con id");
         return ResponseEntity.ok(usuarioService.create(usuario));
     }
 
@@ -59,13 +62,13 @@ public class UsuarioController {
     @PatchMapping
     public ResponseEntity<Usuario> update(@RequestBody Usuario usuario){
         if(usuario.getId()==null)
-            return ResponseEntity.badRequest().build();
+            throw new SecurityModificationException("Intento de actualizar un usuario sin id");
         return ResponseEntity.ok(usuarioService.update(usuario));
     }
 
     //DELETE
-    @DeleteMapping
-    public void delete(@RequestBody Usuario usuario){
-        usuarioService.delete(usuario);
+    @DeleteMapping("{id}")
+    public void delete(@PathVariable Long id){
+        usuarioService.delete(id);
     }
 }
