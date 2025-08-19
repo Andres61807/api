@@ -48,7 +48,9 @@ public class LibroService {
         return libroRepository.findLibrosByBibliotecaId(id);
     }
 
-    
+    public List<Libro> getByEditorial(Long id){
+        return libroRepository.findByEditorial(id);
+    }
 
     //Lista todos los libros por un genero
     public List<Libro> getLibrosGenero(String genero){

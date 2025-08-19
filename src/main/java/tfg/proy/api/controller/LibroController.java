@@ -28,43 +28,18 @@ public class LibroController {
     @GetMapping("/listado")
     public List<Libro> get(){
         return libroService.getAll();
-    }
+    }   
     
     //obtener libros por usuario
     @GetMapping("/listado/biblioteca/{id}")
-    public List<Libro> findLibrosByBiblioteca(@PathVariable long id){
-        return libroService.getByBiblioteca(Long.valueOf(id));
-    }
-    
-    //obtener libros por genero 
-    @GetMapping("/listado/genero/{genero}")
-    public List<Libro> getGenero(@PathVariable String genero){
-        return libroService.getLibrosGenero(genero);
+    public List<Libro> findLibrosByBiblioteca(@PathVariable Long id){
+        return libroService.getByBiblioteca(id);
     }
 
-    //Obtener los libros por autor 
-    @GetMapping("/listado/autor/{nombre}")
-    public List<Libro> getAutor(@PathVariable String nombre){
-        return libroService.getAutor(nombre);
-    }
-    
-    
-    //Obtener libros por editorial 
-    @GetMapping("/listado/editorial/{nombre}")
-    public List<Libro> getEditorial(@PathVariable String nombre){
-        return libroService.getEditorial(nombre);
-    }
-
-    //obtener los libros por saga 
-    @GetMapping("/listado/saga/{saga}")
-    public List<Libro> getSaga(@PathVariable String saga){
-        return libroService.getSaga(saga);
-    }
-
-    //obtener listado de libros por idioma
-    @GetMapping("/listado/idioma/{idioma}")
-    public List<Libro> getIdioma(@PathVariable String idioma){
-        return libroService.getIdioma(idioma);
+    //obtener libros por editorial
+    @GetMapping("listado/editorial/{id}")
+    public List<Libro> findLibrosByEditorial(@PathVariable Long id){
+        return libroService.getByEditorial(id);
     }
 
     //obtener libros por id

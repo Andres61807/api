@@ -34,6 +34,9 @@ public interface LibroRepository extends JpaRepository<Libro, Long>{
     @Query("SELECT lb.libro FROM LibroBiblioteca lb WHERE lb.biblioteca.id = :bibliotecaId")
     List<Libro> findLibrosByBibliotecaId(@Param("bibliotecaId") Long bibliotecaId);
 
+     @Query("SELECT lb.libro FROM LibroEditorial lb WHERE lb.editorial.id = :editorialId")
+    List<Libro> findLibrosByEditorialId(@Param("editorialId") Long bibliotecaId);
+
     List<Libro> findBySaga(Saga saga);
     
     List<Libro> findByIdiomas(List<Idioma> idioma);

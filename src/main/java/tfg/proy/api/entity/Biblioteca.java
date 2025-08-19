@@ -61,6 +61,12 @@ public class Biblioteca {
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
     }
+    public List<LibroBiblioteca> getLibros() {
+        return libros;
+    }
+    public void setLibros(List<LibroBiblioteca> libros) {
+        this.libros = libros;
+    }
     
     
 }
